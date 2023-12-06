@@ -20,3 +20,6 @@ def create(request: PostBase, db: Session = Depends(get_db)):
                             detail="Invalid image_url_type")
     return db_post.create(db, request)
     
+@router.get("/all", response_model=list[PostDisplay])
+def get_all(db: Session = Depends(get_db)):
+    return db_post.get_all(db)
